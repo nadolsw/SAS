@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?><_ROOT_ EMVERSION="13.2" ORIENTATION="VERTICAL">
+<Workspace>
+<NODES>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="IGN" ID="IGN" X="162" Y="189" DESCRIPTION="Interactive Grouping (IG)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="CREDSCORE" TOOLPREFIX="IGN">
+<PROPERTIES Location="CATALOG" Catalog="SASHELP.EMCREDIT.IGN.SOURCE" ApplyLevelRule="N" BinMethod="QUANTILE" NumBins="20" UseCodes="N" Freeze="N" ImportWoe="NONE" WoeAdjust="Y" AdjustFactor="0.5" ApplyMinDist="Y" MinDistMethod="PERCENT" MinPercentDist="5.0" MinCountDist="." Criterion="PROBCHISQ" MissingValue="SEPARATEIFANY" MinCatSize="5" MaxBranch="20" Precision="2" GroupInt="OPTIMAL" GroupOrd="OPTIMAL" CreateGrouping="N" CreateMethod="OVERWRITE" ImportGrouping="N" VarSelMethod="INFOVAL" GiniCutoff="20" InfoValCutoff="0.1" GrpMsmnt="ORDINAL" MaxVar="10" ApplyMonotonicity="Y" ApplyMinNumNonEvent="Y" ApplyMinNumEvent="Y" ApplyMaxBinTotal="Y" ApplyMinBinDiff="Y" ApplyMinNumBins="Y" MinNumNonEvent="1" MinNumEvent="1" MaxBinTotal="23250" MinBinDiff="0.01" MinNumBins="2" ForceRun="N" RunAction="Train" Component="IGN" CodesData="" ImportData="" DataNeeded="Y" ApplyMaxBinWidth="N" MaxBinWidth="." ApplyMinBinWidth="N" MinBinWidth="." USERMAX="1" USERMIN="0" NodeSample="20000" USERCUTVALUE="0.20" ALLOWOOB="N" RandomSeed="12345" INTTARGETMETHOD="DUPFREQ" TARGETBOUNDS="N">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="IGN" ID="IGN2" X="330" Y="517" DESCRIPTION="IG with rejects included" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="CREDSCORE" TOOLPREFIX="IGN">
+<PROPERTIES Location="CATALOG" Catalog="SASHELP.EMCREDIT.IGN.SOURCE" ApplyLevelRule="N" BinMethod="QUANTILE" NumBins="20" UseCodes="N" Freeze="N" ImportWoe="NONE" WoeAdjust="Y" AdjustFactor="0.5" ApplyMinDist="Y" MinDistMethod="PERCENT" MinPercentDist="5" MinCountDist="." Criterion="ENTROPY" MissingValue="SEPARATEIFANY" MinCatSize="5" MaxBranch="10" Precision="2" GroupInt="OPTIMAL" GroupOrd="OPTIMAL" CreateGrouping="N" CreateMethod="OVERWRITE" ImportGrouping="N" VarSelMethod="INFOVAL" GiniCutoff="20" InfoValCutoff="0.1" GrpMsmnt="ORDINAL" MaxVar="10" ApplyMonotonicity="Y" ApplyMinNumNonEvent="Y" ApplyMinNumEvent="Y" ApplyMaxBinTotal="Y" ApplyMinBinDiff="Y" ApplyMinNumBins="Y" MinNumNonEvent="1" MinNumEvent="1" MaxBinTotal="23250" MinBinDiff="0.01" MinNumBins="2" ForceRun="N" RunAction="Train" Component="IGN" CodesData="" ImportData="" DataNeeded="Y" ApplyMaxBinWidth="N" MaxBinWidth="." ApplyMinBinWidth="N" MinBinWidth="." USERMAX="1" USERMIN="0" NodeSample="20000" USERCUTVALUE="0.20" ALLOWOOB="N" RandomSeed="12345" INTTARGETMETHOD="DUPFREQ" TARGETBOUNDS="N">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMSAMP.IDS.CLASS" COMPONENT="DataSource" ID="Ids" X="282" Y="18" DESCRIPTION="ACCEPTS" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="SAMPLE" TOOLPREFIX="Ids">
+<PROPERTIES DataSource="accepts" Scope="LOCAL" Role="RAW" Library="CREDIT" Table="ACCEPTS" NCols="22" NObs="5837" NBytes="1049600" Segment="" DataSourceRole="RAW" OutputType="VIEW" ForceRun="N" ComputeStatistics="N" DataSelection="DATASOURCE" NewTable="" MetaAdvisor="BASIC" ApplyIntervalLevelLowerLimit="Y" IntervalLowerLimit="20" ApplyMaxPercentMissing="Y" MaxPercentMissing="50" ApplyMaxClassLevels="Y" MaxClassLevels="20" IdentifyEmptyColumns="Y" VariableValidation="STRICT" NewVariableRole="REJECT" DropMapVariables="Y" DsId="accepts" DsSampleName="" DsSampleSizeType="" DsSampleSize="" DsCreatedBy="Aric" DsCreateDate="1769081789.4" DsModifiedBy="Aric" DsModifyDate="1769081789.4" DsScope="LOCAL" Sample="D" SampleSizeType="PERCENT" SampleSizePercent="20" SampleSizeObs="10000" DBPassThrough="Y" RunAction="Train" Component="DataSource" Description="">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA Variable="bad" AttributeName="ROLE" AttributeValue="TARGET"/>
+<DELTA Variable="bad" AttributeName="LEVEL" AttributeValue="BINARY"/>
+<DELTA Variable="bankruptcy" AttributeName="LEVEL" AttributeValue="BINARY"/>
+<DELTA Variable="purpose" AttributeName="LEVEL" AttributeValue="BINARY"/>
+<DELTA Variable="used_ind" AttributeName="LEVEL" AttributeValue="BINARY"/>
+<DELTA Variable="weight" AttributeName="ROLE" AttributeValue="FREQ"/>
+<DELTA Variable="weight" AttributeName="LEVEL" AttributeValue="BINARY"/>
+</EmVariableAttributes>
+<EmTargetAttributes>
+<bad>
+<DecData Table="EMWS1.Ids_bad_DD">
+<Data>
+<Obs BAD="1" COUNT="1196" DATAPRIOR="0.0514613341" TRAINPRIOR="0.0514613341" DECPRIOR="." DECISION1="1" DECISION2="0"/>
+<Obs BAD="0" COUNT="22044.75" DATAPRIOR="0.9485386659" TRAINPRIOR="0.9485386659" DECPRIOR="." DECISION1="0" DECISION2="1"/>
+</Data>
+<Metadata>
+<Variable NAME="bad" LABEL="" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="COUNT" LABEL="Level Counts" LENGTH="8" FORMAT="10." TYPE="N"/>
+<Variable NAME="DATAPRIOR" LABEL="Data Proportions" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="TRAINPRIOR" LABEL="Training Proportions" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECPRIOR" LABEL="Decision Priors" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION1" LABEL="1" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION2" LABEL="0" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS1.Ids_bad_DM">
+<Data>
+<Obs _TYPE_="MATRIX" VARIABLE="" LABEL="" LEVEL="PROFIT" EVENT="" ORDER="" FORMAT="" TYPE="" COST="" USE="N"/>
+<Obs _TYPE_="TARGET" VARIABLE="bad" LABEL="" LEVEL="BINARY" EVENT="1" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION1" LABEL="1" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION2" LABEL="0" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DATAPRIOR" VARIABLE="DATAPRIOR" LABEL="Data Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="TRAINPRIOR" VARIABLE="TRAINPRIOR" LABEL="Training Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="DECPRIOR" VARIABLE="DECPRIOR" LABEL="Decision Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_bad1" LABEL="Predicted: bad=1" LEVEL="1" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_bad1" LABEL="Residual: bad=1" LEVEL="1" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_bad0" LABEL="Predicted: bad=0" LEVEL="0" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_bad0" LABEL="Residual: bad=0" LEVEL="0" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="FROM" VARIABLE="F_bad" LABEL="From: bad" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+<Obs _TYPE_="INTO" VARIABLE="I_bad" LABEL="Into: bad" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+<Obs _TYPE_="FREQ" VARIABLE="weight" LABEL="" LEVEL="BINARY" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+</Data>
+<Metadata>
+<Variable NAME="_TYPE_" LABEL="Type" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="VARIABLE" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LABEL" LABEL="Label" LENGTH="256" FORMAT="" TYPE="C"/>
+<Variable NAME="LEVEL" LABEL="Measurement Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="EVENT" LABEL="Target Event" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="ORDER" LABEL="Order" LENGTH="10" FORMAT="" TYPE="C"/>
+<Variable NAME="FORMAT" LABEL="Format" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="TYPE" LABEL="Type" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="COST" LABEL="Cost" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="USE" LABEL="Use" LENGTH="1" FORMAT="" TYPE="C"/>
+</Metadata>
+</DecMeta>
+</bad>
+</EmTargetAttributes>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMSAMP.IDS.CLASS" COMPONENT="DataSource" ID="Ids2" X="375" Y="263" DESCRIPTION="REJECTS" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="SAMPLE" TOOLPREFIX="Ids">
+<PROPERTIES DataSource="rejects" Scope="LOCAL" Role="SCORE" Library="CREDIT" Table="REJECTS" NCols="24" NObs="4233" NBytes="902144" Segment="" DataSourceRole="SCORE" OutputType="VIEW" ForceRun="N" ComputeStatistics="N" DataSelection="DATASOURCE" NewTable="" MetaAdvisor="BASIC" ApplyIntervalLevelLowerLimit="Y" IntervalLowerLimit="20" ApplyMaxPercentMissing="Y" MaxPercentMissing="50" ApplyMaxClassLevels="Y" MaxClassLevels="20" IdentifyEmptyColumns="Y" VariableValidation="STRICT" NewVariableRole="REJECT" DropMapVariables="Y" DsId="rejects" DsSampleName="" DsSampleSizeType="" DsSampleSize="" DsCreatedBy="Aric" DsCreateDate="1769096238.2" DsModifiedBy="Aric" DsModifyDate="1769096238.3" DsScope="LOCAL" Sample="D" SampleSizeType="PERCENT" SampleSizePercent="20" SampleSizeObs="10000" DBPassThrough="Y" RunAction="Train" Component="DataSource" Description="">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA Variable="bankruptcy" AttributeName="LEVEL" AttributeValue="BINARY"/>
+<DELTA Variable="purpose" AttributeName="LEVEL" AttributeValue="BINARY"/>
+<DELTA Variable="used_ind" AttributeName="LEVEL" AttributeValue="BINARY"/>
+</EmVariableAttributes>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMSAMP.EMDPART.CLASS" COMPONENT="Partition" ID="Part" X="161" Y="112" DESCRIPTION="Data Partition" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="SAMPLE" TOOLPREFIX="Part">
+<PROPERTIES Method="DEFAULT" TrainPct="70" ValidatePct="30" TestPct="0" RandomSeed="12345" OutputType="DATA" IntervalDistribution="Y" ClassDistribution="Y" ForceRun="N" RunAction="Train" Component="Partition">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMSAMP.EMDPART.CLASS" COMPONENT="Partition" ID="Part2" X="252" Y="452" DESCRIPTION="Data Partition (After RejInf)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="SAMPLE" TOOLPREFIX="Part">
+<PROPERTIES Method="DEFAULT" TrainPct="70" ValidatePct="30" TestPct="0" RandomSeed="12345" OutputType="DATA" IntervalDistribution="Y" ClassDistribution="Y" ForceRun="N" RunAction="Train" Component="Partition">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="RejectInference" ID="RejInf" X="162" Y="387" DESCRIPTION="Reject Inference" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="CREDSCORE" TOOLPREFIX="RejInf">
+<PROPERTIES Location="CATALOG" Catalog="SASHELP.EMCREDIT.REJECTINFERENCE.SOURCE" DataNeeded="Y" RejectRate="0.3" RateIncrease="1" CutOffScore="200" MinScore="0" MaxScore="250" RandomSeed="12345" NumScoreBuckets="25" InferenceMethod="FUZZY" ScoreRangeMethod="ACCEPTS" ForceRun="N" RunAction="Train" Component="RejectInference">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="RejectInference" ID="RejInf2" X="375" Y="387" DESCRIPTION="RI (Hard Cutoff)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="CREDSCORE" TOOLPREFIX="RejInf">
+<PROPERTIES Location="CATALOG" Catalog="SASHELP.EMCREDIT.REJECTINFERENCE.SOURCE" DataNeeded="Y" RejectRate="0.3" RateIncrease="1" CutOffScore="500" MinScore="0" MaxScore="250" RandomSeed="12345" NumScoreBuckets="25" InferenceMethod="HARDCUTOFF" ScoreRangeMethod="ACCEPTS" ForceRun="N" RunAction="Train" Component="RejectInference">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes>
+<DELTA Variable="_dataobs_" AttributeName="LABEL" AttributeValue=""/>
+</EmVariableAttributes>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="RejectInference" ID="RejInf3" X="559" Y="385" DESCRIPTION="RI (Parceling)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="CREDSCORE" TOOLPREFIX="RejInf">
+<PROPERTIES Location="CATALOG" Catalog="SASHELP.EMCREDIT.REJECTINFERENCE.SOURCE" DataNeeded="Y" RejectRate="0.3" RateIncrease="1" CutOffScore="200" MinScore="0" MaxScore="250" RandomSeed="12345" NumScoreBuckets="25" InferenceMethod="PARCELLING" ScoreRangeMethod="ACCEPTS" ForceRun="N" RunAction="Train" Component="RejectInference">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes>
+<DELTA Variable="_dataobs_" AttributeName="LABEL" AttributeValue=""/>
+</EmVariableAttributes>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCREDIT.SCORECARD.CLASS" COMPONENT="Scorecard" ID="Scorecard" X="162" Y="259" DESCRIPTION="Scorecard (preliminary)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODEL" TOOLPREFIX="Scorecard">
+<PROPERTIES freeze="NONE" generateIntercept="N" reverseScore="N" useIndet="N" odds="20" scorecardPoints="500" pointsToDoubleOdds="20" scorecardType="DETAILED" noInfo="NEUTRAL" reportAdverse="N" numAdverse="3" numberOfBuckets="25" bucketMethod="MINMAX" revenueAcceptedGood="1000" costAcceptedBad="50000" currentApprovalRate="70" badRate="2.5" precision="0" generateCharacteristicAnalysis="N" displayNoInfo="N" ModelSelection="NONE" SelectionCriterion="DEFAULT" SelectionDefault="Y" SlEntry="0.05" SlStay="0.05" Start="0" Stop="0" Force="0" Hierarchy="CLASS" Rule="NONE" MaxStep="." analysisVariables="WOE" scoreOutvars="COMPLETE" ForceRun="N" RunAction="Train" Component="Scorecard" Sequential="N">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+<MODELORDER Type="DATA">
+<Data>
+<Obs NAME="WOE_age_oldest_tr" VARIABLE="WOE_age_oldest_tr" KEY="1"/>
+<Obs NAME="WOE_bureau_score" VARIABLE="WOE_bureau_score" KEY="2"/>
+<Obs NAME="WOE_ltv" VARIABLE="WOE_ltv" KEY="3"/>
+<Obs NAME="WOE_rev_util" VARIABLE="WOE_rev_util" KEY="4"/>
+<Obs NAME="WOE_tot_derog" VARIABLE="WOE_tot_derog" KEY="5"/>
+<Obs NAME="WOE_tot_rev_line" VARIABLE="WOE_tot_rev_line" KEY="6"/>
+<Obs NAME="WOE_tot_tr" VARIABLE="WOE_tot_tr" KEY="7"/>
+</Data>
+<Metadata>
+<Variable NAME="NAME" LABEL="Variable Name" LENGTH="64" FORMAT="" TYPE="C"/>
+<Variable NAME="variable" LABEL="" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="key" LABEL="" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</MODELORDER>
+<ADVERSEVAR Type="DATA">
+<Data/>
+<Metadata/>
+</ADVERSEVAR>
+<SCORECARD Type="DATA">
+<Data>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="-2" _LABEL_="Neutral Score" _WOE_="." MANUALWOE="." _PERCENT_="." _EVENT_RATE_="." SCORECARD_POINTS="71" _NO_INFO_="." _ESTIMATE_="." LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="1" _LABEL_="age_oldest_tr&lt; 41" _WOE_="-0.759727256" MANUALWOE="." _PERCENT_="9.2883492161" _EVENT_RATE_="10.39218931" SCORECARD_POINTS="65" _NO_INFO_="71.195138105" _ESTIMATE_="-0.297888297" LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="2" _LABEL_="41&lt;= age_oldest_tr&lt; 126" _WOE_="-0.238065139" MANUALWOE="." _PERCENT_="29.403627421" _EVENT_RATE_="6.440146367" SCORECARD_POINTS="69" _NO_INFO_="71.195138105" _ESTIMATE_="-0.297888297" LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="3" _LABEL_="126&lt;= age_oldest_tr&lt; 196" _WOE_="0.1401765103" MANUALWOE="." _PERCENT_="28.807254842" _EVENT_RATE_="4.503254722" SCORECARD_POINTS="72" _NO_INFO_="71.195138105" _ESTIMATE_="-0.297888297" LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="4" _LABEL_="196&lt;= age_oldest_tr" _WOE_="0.7856288834" MANUALWOE="." _PERCENT_="29.297571472" _EVENT_RATE_="2.4133046535" SCORECARD_POINTS="78" _NO_INFO_="71.195138105" _ESTIMATE_="-0.297888297" LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="5" _LABEL_="_MISSING_" _WOE_="-0.579441841" MANUALWOE="." _PERCENT_="3.2031970489" _EVENT_RATE_="8.8291746641" SCORECARD_POINTS="66" _NO_INFO_="71.195138105" _ESTIMATE_="-0.297888297" LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="-2" _LABEL_="Neutral Score" _WOE_="." MANUALWOE="." _PERCENT_="." _EVENT_RATE_="." SCORECARD_POINTS="71" _NO_INFO_="." _ESTIMATE_="." LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="1" _LABEL_="bureau_score&lt; 610" _WOE_="-1.26826505" MANUALWOE="." _PERCENT_="4.5634798647" _EVENT_RATE_="16.167059616" SCORECARD_POINTS="42" _NO_INFO_="71.195138105" _ESTIMATE_="-0.807167958" LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="2" _LABEL_="610&lt;= bureau_score&lt; 654" _WOE_="-0.861824696" MANUALWOE="." _PERCENT_="14.368275438" _EVENT_RATE_="11.382113821" SCORECARD_POINTS="51" _NO_INFO_="71.195138105" _ESTIMATE_="-0.807167958" LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="3" _LABEL_="654&lt;= bureau_score&lt; 701" _WOE_="0.0095466024" MANUALWOE="." _PERCENT_="27.849677221" _EVENT_RATE_="5.0996191843" SCORECARD_POINTS="71" _NO_INFO_="71.195138105" _ESTIMATE_="-0.807167958" LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="4" _LABEL_="701&lt;= bureau_score&lt; 732" _WOE_="0.5822293798" MANUALWOE="." _PERCENT_="19.437442361" _EVENT_RATE_="2.9416416258" SCORECARD_POINTS="85" _NO_INFO_="71.195138105" _ESTIMATE_="-0.807167958" LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="5" _LABEL_="732&lt;= bureau_score" _WOE_="1.544636631" MANUALWOE="." _PERCENT_="29.010144482" _EVENT_RATE_="1.1444314931" SCORECARD_POINTS="107" _NO_INFO_="71.195138105" _ESTIMATE_="-0.807167958" LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="6" _LABEL_="_MISSING_" _WOE_="-0.649217798" MANUALWOE="." _PERCENT_="4.7709806333" _EVENT_RATE_="9.4072164948" SCORECARD_POINTS="56" _NO_INFO_="71.195138105" _ESTIMATE_="-0.807167958" LABEL="bureau_score"/>
+<Obs _VARIABLE_="ltv" _GROUP_="-2" _LABEL_="Neutral Score" _WOE_="." MANUALWOE="." _PERCENT_="." _EVENT_RATE_="." SCORECARD_POINTS="71" _NO_INFO_="." _ESTIMATE_="." LABEL="ltv"/>
+<Obs _VARIABLE_="ltv" _GROUP_="1" _LABEL_="ltv&lt; 91" _WOE_="0.6669005594" MANUALWOE="." _PERCENT_="28.366123578" _EVENT_RATE_="2.7092928746" SCORECARD_POINTS="91" _NO_INFO_="71.195138105" _ESTIMATE_="-1.015786302" LABEL="ltv"/>
+<Obs _VARIABLE_="ltv" _GROUP_="2" _LABEL_="91&lt;= ltv&lt; 102" _WOE_="0.0373272607" MANUALWOE="." _PERCENT_="30.82231786" _EVENT_RATE_="4.9668378796" SCORECARD_POINTS="72" _NO_INFO_="71.195138105" _ESTIMATE_="-1.015786302" LABEL="ltv"/>
+<Obs _VARIABLE_="ltv" _GROUP_="3" _LABEL_="102&lt;= ltv&lt; 119" _WOE_="-0.212015836" MANUALWOE="." _PERCENT_="30.227482324" _EVENT_RATE_="6.2849588122" SCORECARD_POINTS="65" _NO_INFO_="71.195138105" _ESTIMATE_="-1.015786302" LABEL="ltv"/>
+<Obs _VARIABLE_="ltv" _GROUP_="4" _LABEL_="119&lt;= ltv" _WOE_="-0.587315898" MANUALWOE="." _PERCENT_="10.577928066" _EVENT_RATE_="8.8927637315" SCORECARD_POINTS="54" _NO_INFO_="71.195138105" _ESTIMATE_="-1.015786302" LABEL="ltv"/>
+<Obs _VARIABLE_="ltv" _GROUP_="5" _LABEL_="_MISSING_" _WOE_="-4.012727538" MANUALWOE="." _PERCENT_="0.0061481709" _EVENT_RATE_="100" SCORECARD_POINTS="-46" _NO_INFO_="71.195138105" _ESTIMATE_="-1.015786302" LABEL="ltv"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="-2" _LABEL_="Neutral Score" _WOE_="." MANUALWOE="." _PERCENT_="." _EVENT_RATE_="." SCORECARD_POINTS="71" _NO_INFO_="." _ESTIMATE_="." LABEL="rev_util"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="1" _LABEL_="rev_util&lt; 2" _WOE_="-0.150893464" MANUALWOE="." _PERCENT_="18.751921303" _EVENT_RATE_="5.9344262295" SCORECARD_POINTS="70" _NO_INFO_="71.195138105" _ESTIMATE_="-0.17810495" LABEL="rev_util"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="2" _LABEL_="2&lt;= rev_util&lt; 27, _MISSING_" _WOE_="0.7332653085" MANUALWOE="." _PERCENT_="30.743928681" _EVENT_RATE_="2.5397460254" SCORECARD_POINTS="75" _NO_INFO_="71.195138105" _ESTIMATE_="-0.17810495" LABEL="rev_util"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="3" _LABEL_="27&lt;= rev_util&lt; 70" _WOE_="0.1029490068" MANUALWOE="." _PERCENT_="30.173685828" _EVENT_RATE_="4.6660893485" SCORECARD_POINTS="72" _NO_INFO_="71.195138105" _ESTIMATE_="-0.17810495" LABEL="rev_util"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="4" _LABEL_="70&lt;= rev_util&lt; 92" _WOE_="-0.427061435" MANUALWOE="." _PERCENT_="10.090685521" _EVENT_RATE_="7.6770753998" SCORECARD_POINTS="69" _NO_INFO_="71.195138105" _ESTIMATE_="-0.17810495" LABEL="rev_util"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="5" _LABEL_="92&lt;= rev_util" _WOE_="-0.765632944" MANUALWOE="." _PERCENT_="10.239778666" _EVENT_RATE_="10.447313119" SCORECARD_POINTS="67" _NO_INFO_="71.195138105" _ESTIMATE_="-0.17810495" LABEL="rev_util"/>
+<Obs _VARIABLE_="tot_derog" _GROUP_="-2" _LABEL_="Neutral Score" _WOE_="." MANUALWOE="." _PERCENT_="." _EVENT_RATE_="." SCORECARD_POINTS="71" _NO_INFO_="." _ESTIMATE_="." LABEL="tot_derog"/>
+<Obs _VARIABLE_="tot_derog" _GROUP_="1" _LABEL_="tot_derog&lt; 1" _WOE_="0.5204134556" MANUALWOE="." _PERCENT_="52.754380572" _EVENT_RATE_="3.1233611095" SCORECARD_POINTS="73" _NO_INFO_="71.195138105" _ESTIMATE_="-0.102194087" LABEL="tot_derog"/>
+<Obs _VARIABLE_="tot_derog" _GROUP_="2" _LABEL_="1&lt;= tot_derog&lt; 4" _WOE_="-0.14606749" MANUALWOE="." _PERCENT_="27.99569628" _EVENT_RATE_="5.9075436477" SCORECARD_POINTS="71" _NO_INFO_="71.195138105" _ESTIMATE_="-0.102194087" LABEL="tot_derog"/>
+<Obs _VARIABLE_="tot_derog" _GROUP_="3" _LABEL_="4&lt;= tot_derog" _WOE_="-0.690658249" MANUALWOE="." _PERCENT_="16.05287427" _EVENT_RATE_="9.7663730372" SCORECARD_POINTS="69" _NO_INFO_="71.195138105" _ESTIMATE_="-0.102194087" LABEL="tot_derog"/>
+<Obs _VARIABLE_="tot_derog" _GROUP_="4" _LABEL_="_MISSING_" _WOE_="-0.557462935" MANUALWOE="." _PERCENT_="3.197048878" _EVENT_RATE_="8.6538461538" SCORECARD_POINTS="70" _NO_INFO_="71.195138105" _ESTIMATE_="-0.102194087" LABEL="tot_derog"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="-2" _LABEL_="Neutral Score" _WOE_="." MANUALWOE="." _PERCENT_="." _EVENT_RATE_="." SCORECARD_POINTS="71" _NO_INFO_="." _ESTIMATE_="." LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="1" _LABEL_="tot_rev_line&lt; 500" _WOE_="-0.917353315" MANUALWOE="." _PERCENT_="4.5773132493" _EVENT_RATE_="11.954331766" SCORECARD_POINTS="59" _NO_INFO_="71.195138105" _ESTIMATE_="-0.467852235" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="2" _LABEL_="500&lt;= tot_rev_line&lt; 1136" _WOE_="-0.818984181" MANUALWOE="." _PERCENT_="4.6572394713" _EVENT_RATE_="10.95709571" SCORECARD_POINTS="60" _NO_INFO_="71.195138105" _ESTIMATE_="-0.467852235" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="3" _LABEL_="1136&lt;= tot_rev_line&lt; 2000" _WOE_="-0.619020828" MANUALWOE="." _PERCENT_="4.5004611128" _EVENT_RATE_="9.1530054645" SCORECARD_POINTS="63" _NO_INFO_="71.195138105" _ESTIMATE_="-0.467852235" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="4" _LABEL_="2000&lt;= tot_rev_line&lt; 5477" _WOE_="-0.279385664" MANUALWOE="." _PERCENT_="14.053181678" _EVENT_RATE_="6.6936454118" SCORECARD_POINTS="67" _NO_INFO_="71.195138105" _ESTIMATE_="-0.467852235" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="5" _LABEL_="5477&lt;= tot_rev_line&lt; 8920" _WOE_="0.1092669327" MANUALWOE="." _PERCENT_="9.2791269597" _EVENT_RATE_="4.6380652642" SCORECARD_POINTS="73" _NO_INFO_="71.195138105" _ESTIMATE_="-0.467852235" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="6" _LABEL_="8920&lt;= tot_rev_line&lt; 12970" _WOE_="-0.226586683" MANUALWOE="." _PERCENT_="9.2637565324" _EVENT_RATE_="6.3713290194" SCORECARD_POINTS="68" _NO_INFO_="71.195138105" _ESTIMATE_="-0.467852235" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="7" _LABEL_="12970&lt;= tot_rev_line&lt; 18348" _WOE_="0.4163707526" MANUALWOE="." _PERCENT_="9.2560713188" _EVENT_RATE_="3.4540019927" SCORECARD_POINTS="77" _NO_INFO_="71.195138105" _ESTIMATE_="-0.467852235" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="8" _LABEL_="18348&lt;= tot_rev_line&lt; 25000" _WOE_="1.0483971565" MANUALWOE="." _PERCENT_="9.2253304642" _EVENT_RATE_="1.8660446518" SCORECARD_POINTS="85" _NO_INFO_="71.195138105" _ESTIMATE_="-0.467852235" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="9" _LABEL_="25000&lt;= tot_rev_line&lt; 33617" _WOE_="0.6917222126" MANUALWOE="." _PERCENT_="9.2991085152" _EVENT_RATE_="2.6446280992" SCORECARD_POINTS="81" _NO_INFO_="71.195138105" _ESTIMATE_="-0.467852235" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="10" _LABEL_="33617&lt;= tot_rev_line&lt; 47781" _WOE_="0.8574617568" MANUALWOE="." _PERCENT_="9.2914233016" _EVENT_RATE_="2.2497932175" SCORECARD_POINTS="83" _NO_INFO_="71.195138105" _ESTIMATE_="-0.467852235" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="11" _LABEL_="47781&lt;= tot_rev_line" _WOE_="1.6208336329" MANUALWOE="." _PERCENT_="9.2683676606" _EVENT_RATE_="1.0613598673" SCORECARD_POINTS="93" _NO_INFO_="71.195138105" _ESTIMATE_="-0.467852235" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="12" _LABEL_="_MISSING_" _WOE_="-0.617972884" MANUALWOE="." _PERCENT_="7.3286197356" _EVENT_RATE_="9.144295302" SCORECARD_POINTS="63" _NO_INFO_="71.195138105" _ESTIMATE_="-0.467852235" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="-2" _LABEL_="Neutral Score" _WOE_="." MANUALWOE="." _PERCENT_="." _EVENT_RATE_="." SCORECARD_POINTS="71" _NO_INFO_="." _ESTIMATE_="." LABEL="tot_tr"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="1" _LABEL_="tot_tr&lt; 11" _WOE_="-0.416557481" MANUALWOE="." _PERCENT_="27.656009837" _EVENT_RATE_="7.6029567054" SCORECARD_POINTS="70" _NO_INFO_="71.195138105" _ESTIMATE_="-0.059102049" LABEL="tot_tr"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="2" _LABEL_="11&lt;= tot_tr&lt; 16" _WOE_="-0.03071216" MANUALWOE="." _PERCENT_="17.639102367" _EVENT_RATE_="5.298013245" SCORECARD_POINTS="71" _NO_INFO_="71.195138105" _ESTIMATE_="-0.059102049" LABEL="tot_tr"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="3" _LABEL_="16&lt;= tot_tr" _WOE_="0.3859074751" MANUALWOE="." _PERCENT_="51.507838918" _EVENT_RATE_="3.5570409716" SCORECARD_POINTS="72" _NO_INFO_="71.195138105" _ESTIMATE_="-0.059102049" LABEL="tot_tr"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="4" _LABEL_="_MISSING_" _WOE_="-0.557462935" MANUALWOE="." _PERCENT_="3.197048878" _EVENT_RATE_="8.6538461538" SCORECARD_POINTS="70" _NO_INFO_="71.195138105" _ESTIMATE_="-0.059102049" LABEL="tot_tr"/>
+</Data>
+<Metadata>
+<Variable NAME="_variable_" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="_group_" LABEL="Group" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="_label_" LABEL="Label" LENGTH="200" FORMAT="" TYPE="C"/>
+<Variable NAME="_woe_" LABEL="Weight of Evidence" LENGTH="8" FORMAT="8.5" TYPE="N"/>
+<Variable NAME="manualWoe" LABEL="Manual WOE" LENGTH="8" FORMAT="8.5" TYPE="N"/>
+<Variable NAME="_percent_" LABEL="" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="_event_rate_" LABEL="Event Rate BAD = 1" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="SCORECARD_POINTS" LABEL="Scorecard Points" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="_no_info_" LABEL="" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="_ESTIMATE_" LABEL="" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="LABEL" LABEL="Label" LENGTH="200" FORMAT="" TYPE="C"/>
+</Metadata>
+</SCORECARD>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCREDIT.SCORECARD.CLASS" COMPONENT="Scorecard" ID="Scorecard2" X="437" Y="582" DESCRIPTION="Final Scorecard" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODEL" TOOLPREFIX="Scorecard">
+<PROPERTIES freeze="NONE" generateIntercept="N" reverseScore="N" useIndet="N" odds="20" scorecardPoints="500" pointsToDoubleOdds="20" scorecardType="SUMMARY" noInfo="NEUTRAL" reportAdverse="N" numAdverse="3" numberOfBuckets="25" bucketMethod="MINMAX" revenueAcceptedGood="1000" costAcceptedBad="50000" currentApprovalRate="70" badRate="2.5" precision="0" generateCharacteristicAnalysis="N" displayNoInfo="N" ModelSelection="NONE" SelectionCriterion="DEFAULT" SelectionDefault="Y" SlEntry="0.05" SlStay="0.05" Start="0" Stop="0" Force="0" Hierarchy="CLASS" Rule="NONE" MaxStep="." analysisVariables="WOE" scoreOutvars="COMPLETE" ForceRun="N" RunAction="Train" Component="Scorecard" Sequential="N">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes>
+<DELTA Variable="P_bad0" AttributeName="USE" AttributeValue=""/>
+<DELTA Variable="P_bad1" AttributeName="USE" AttributeValue=""/>
+<DELTA Variable="R_bad0" AttributeName="USE" AttributeValue=""/>
+<DELTA Variable="R_bad1" AttributeName="USE" AttributeValue=""/>
+</EmVariableAttributes>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+<MODELORDER Type="DATA">
+<Data>
+<Obs NAME="WOE_age_oldest_tr" VARIABLE="WOE_age_oldest_tr" KEY="1"/>
+<Obs NAME="WOE_bureau_score" VARIABLE="WOE_bureau_score" KEY="2"/>
+<Obs NAME="WOE_ltv" VARIABLE="WOE_ltv" KEY="3"/>
+<Obs NAME="WOE_msrp" VARIABLE="WOE_msrp" KEY="4"/>
+<Obs NAME="WOE_rev_util" VARIABLE="WOE_rev_util" KEY="5"/>
+<Obs NAME="WOE_tot_derog" VARIABLE="WOE_tot_derog" KEY="6"/>
+<Obs NAME="WOE_tot_rev_line" VARIABLE="WOE_tot_rev_line" KEY="7"/>
+</Data>
+<Metadata>
+<Variable NAME="NAME" LABEL="Variable Name" LENGTH="64" FORMAT="" TYPE="C"/>
+<Variable NAME="variable" LABEL="" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="key" LABEL="" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</MODELORDER>
+<ADVERSEVAR Type="DATA">
+<Data/>
+<Metadata/>
+</ADVERSEVAR>
+<SCORECARD Type="DATA">
+<Data>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="-2" _LABEL_="Neutral Score" _WOE_="." MANUALWOE="." _PERCENT_="." _EVENT_RATE_="." SCORECARD_POINTS="62" _NO_INFO_="." _ESTIMATE_="." LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="1" _LABEL_="age_oldest_tr&lt; 21" _WOE_="-0.563673351" MANUALWOE="." _PERCENT_="4.6433313267" _EVENT_RATE_="9.8389568732" SCORECARD_POINTS="58" _NO_INFO_="61.848124945" _ESTIMATE_="-0.261591119" LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="2" _LABEL_="21&lt;= age_oldest_tr&lt; 38" _WOE_="-0.69493484" MANUALWOE="." _PERCENT_="4.9006429633" _EVENT_RATE_="11.066277557" SCORECARD_POINTS="57" _NO_INFO_="61.848124945" _ESTIMATE_="-0.261591119" LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="3" _LABEL_="38&lt;= age_oldest_tr&lt; 78" _WOE_="-0.326507193" MANUALWOE="." _PERCENT_="14.458922978" _EVENT_RATE_="7.9261907973" SCORECARD_POINTS="59" _NO_INFO_="61.848124945" _ESTIMATE_="-0.261591119" LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="4" _LABEL_="78&lt;= age_oldest_tr&lt; 96" _WOE_="-0.034265868" MANUALWOE="." _PERCENT_="4.9369093839" _EVENT_RATE_="6.0388827323" SCORECARD_POINTS="62" _NO_INFO_="61.848124945" _ESTIMATE_="-0.261591119" LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="5" _LABEL_="96&lt;= age_oldest_tr&lt; 110" _WOE_="-0.241152415" MANUALWOE="." _PERCENT_="4.6902910435" _EVENT_RATE_="7.3252153928" SCORECARD_POINTS="60" _NO_INFO_="61.848124945" _ESTIMATE_="-0.261591119" LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="6" _LABEL_="110&lt;= age_oldest_tr&lt; 159" _WOE_="-0.025712429" MANUALWOE="." _PERCENT_="23.921516495" _EVENT_RATE_="5.9905955193" SCORECARD_POINTS="62" _NO_INFO_="61.848124945" _ESTIMATE_="-0.261591119" LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="7" _LABEL_="159&lt;= age_oldest_tr&lt; 172" _WOE_="0.1591335542" MANUALWOE="." _PERCENT_="5.3099318028" _EVENT_RATE_="5.0304322233" SCORECARD_POINTS="63" _NO_INFO_="61.848124945" _ESTIMATE_="-0.261591119" LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="8" _LABEL_="172&lt;= age_oldest_tr&lt; 203" _WOE_="0.4972748779" MANUALWOE="." _PERCENT_="9.5476162874" _EVENT_RATE_="3.6396780752" SCORECARD_POINTS="66" _NO_INFO_="61.848124945" _ESTIMATE_="-0.261591119" LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="9" _LABEL_="203&lt;= age_oldest_tr" _WOE_="0.7534210675" MANUALWOE="." _PERCENT_="24.361454289" _EVENT_RATE_="2.8405742445" SCORECARD_POINTS="68" _NO_INFO_="61.848124945" _ESTIMATE_="-0.261591119" LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="age_oldest_tr" _GROUP_="10" _LABEL_="_MISSING_" _WOE_="-0.574317038" MANUALWOE="." _PERCENT_="3.2293834302" _EVENT_RATE_="9.9337616323" SCORECARD_POINTS="58" _NO_INFO_="61.848124945" _ESTIMATE_="-0.261591119" LABEL="age_oldest_tr"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="-2" _LABEL_="Neutral Score" _WOE_="." MANUALWOE="." _PERCENT_="." _EVENT_RATE_="." SCORECARD_POINTS="62" _NO_INFO_="." _ESTIMATE_="." LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="1" _LABEL_="bureau_score&lt; 605" _WOE_="-1.031750352" MANUALWOE="." _PERCENT_="4.4852937509" _EVENT_RATE_="14.840384173" SCORECARD_POINTS="36" _NO_INFO_="61.848124945" _ESTIMATE_="-0.879763378" LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="2" _LABEL_="605&lt;= bureau_score&lt; 635" _WOE_="-0.721911558" MANUALWOE="." _PERCENT_="9.7664954234" _EVENT_RATE_="11.334610867" SCORECARD_POINTS="44" _NO_INFO_="61.848124945" _ESTIMATE_="-0.879763378" LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="3" _LABEL_="635&lt;= bureau_score&lt; 661" _WOE_="-0.540889683" MANUALWOE="." _PERCENT_="13.920542288" _EVENT_RATE_="9.6386690164" SCORECARD_POINTS="48" _NO_INFO_="61.848124945" _ESTIMATE_="-0.879763378" LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="4" _LABEL_="661&lt;= bureau_score&lt; 670" _WOE_="-0.250884024" MANUALWOE="." _PERCENT_="4.8384206122" _EVENT_RATE_="7.3915850824" SCORECARD_POINTS="55" _NO_INFO_="61.848124945" _ESTIMATE_="-0.879763378" LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="5" _LABEL_="670&lt;= bureau_score&lt; 701" _WOE_="0.1095608041" MANUALWOE="." _PERCENT_="18.941282729" _EVENT_RATE_="5.2725824246" SCORECARD_POINTS="65" _NO_INFO_="61.848124945" _ESTIMATE_="-0.879763378" LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="6" _LABEL_="701&lt;= bureau_score&lt; 717" _WOE_="0.5624920601" MANUALWOE="." _PERCENT_="9.7297957437" _EVENT_RATE_="3.4177251851" SCORECARD_POINTS="76" _NO_INFO_="61.848124945" _ESTIMATE_="-0.879763378" LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="7" _LABEL_="717&lt;= bureau_score&lt; 736" _WOE_="0.848745802" MANUALWOE="." _PERCENT_="9.5470908771" _EVENT_RATE_="2.589006086" SCORECARD_POINTS="83" _NO_INFO_="61.848124945" _ESTIMATE_="-0.879763378" LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="8" _LABEL_="736&lt;= bureau_score&lt; 759" _WOE_="1.0963933463" MANUALWOE="." _PERCENT_="9.421938863" _EVENT_RATE_="2.0326230139" SCORECARD_POINTS="90" _NO_INFO_="61.848124945" _ESTIMATE_="-0.879763378" LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="9" _LABEL_="759&lt;= bureau_score" _WOE_="2.0167775412" MANUALWOE="." _PERCENT_="14.683824031" _EVENT_RATE_="0.8197533008" SCORECARD_POINTS="113" _NO_INFO_="61.848124945" _ESTIMATE_="-0.879763378" LABEL="bureau_score"/>
+<Obs _VARIABLE_="bureau_score" _GROUP_="10" _LABEL_="_MISSING_" _WOE_="-0.625102222" MANUALWOE="." _PERCENT_="4.6653156816" _EVENT_RATE_="10.397451311" SCORECARD_POINTS="46" _NO_INFO_="61.848124945" _ESTIMATE_="-0.879763378" LABEL="bureau_score"/>
+<Obs _VARIABLE_="ltv" _GROUP_="-2" _LABEL_="Neutral Score" _WOE_="." MANUALWOE="." _PERCENT_="." _EVENT_RATE_="." SCORECARD_POINTS="62" _NO_INFO_="." _ESTIMATE_="." LABEL="ltv"/>
+<Obs _VARIABLE_="ltv" _GROUP_="1" _LABEL_="ltv&lt; 75" _WOE_="1.0325322448" MANUALWOE="." _PERCENT_="9.3960810245" _EVENT_RATE_="2.1637472896" SCORECARD_POINTS="94" _NO_INFO_="61.848124945" _ESTIMATE_="-1.080524955" LABEL="ltv"/>
+<Obs _VARIABLE_="ltv" _GROUP_="2" _LABEL_="75&lt;= ltv&lt; 85" _WOE_="0.504042837" MANUALWOE="." _PERCENT_="9.2404927409" _EVENT_RATE_="3.6160059807" SCORECARD_POINTS="78" _NO_INFO_="61.848124945" _ESTIMATE_="-1.080524955" LABEL="ltv"/>
+<Obs _VARIABLE_="ltv" _GROUP_="3" _LABEL_="85&lt;= ltv&lt; 91" _WOE_="0.5899251826" MANUALWOE="." _PERCENT_="10.794909059" _EVENT_RATE_="3.328346081" SCORECARD_POINTS="80" _NO_INFO_="61.848124945" _ESTIMATE_="-1.080524955" LABEL="ltv"/>
+<Obs _VARIABLE_="ltv" _GROUP_="4" _LABEL_="91&lt;= ltv&lt; 95" _WOE_="0.1655858695" MANUALWOE="." _PERCENT_="9.3717354637" _EVENT_RATE_="4.9997023909" SCORECARD_POINTS="67" _NO_INFO_="61.848124945" _ESTIMATE_="-1.080524955" LABEL="ltv"/>
+<Obs _VARIABLE_="ltv" _GROUP_="5" _LABEL_="95&lt;= ltv&lt; 102" _WOE_="-0.037360995" MANUALWOE="." _PERCENT_="25.247923513" _EVENT_RATE_="6.056513822" SCORECARD_POINTS="61" _NO_INFO_="61.848124945" _ESTIMATE_="-1.080524955" LABEL="ltv"/>
+<Obs _VARIABLE_="ltv" _GROUP_="6" _LABEL_="102&lt;= ltv&lt; 106" _WOE_="-0.142533505" MANUALWOE="." _PERCENT_="9.2266719562" _EVENT_RATE_="6.6832978095" SCORECARD_POINTS="57" _NO_INFO_="61.848124945" _ESTIMATE_="-1.080524955" LABEL="ltv"/>
+<Obs _VARIABLE_="ltv" _GROUP_="7" _LABEL_="106&lt;= ltv&lt; 109" _WOE_="-0.028382444" MANUALWOE="." _PERCENT_="5.5077863535" _EVENT_RATE_="6.0055902311" SCORECARD_POINTS="61" _NO_INFO_="61.848124945" _ESTIMATE_="-1.080524955" LABEL="ltv"/>
+<Obs _VARIABLE_="ltv" _GROUP_="8" _LABEL_="109&lt;= ltv&lt; 116" _WOE_="-0.094839021" MANUALWOE="." _PERCENT_="9.8333818113" _EVENT_RATE_="6.3919428221" SCORECARD_POINTS="59" _NO_INFO_="61.848124945" _ESTIMATE_="-1.080524955" LABEL="ltv"/>
+<Obs _VARIABLE_="ltv" _GROUP_="9" _LABEL_="116&lt;= ltv" _WOE_="-0.28629419" MANUALWOE="." _PERCENT_="10.534182521" _EVENT_RATE_="7.6376370839" SCORECARD_POINTS="53" _NO_INFO_="61.848124945" _ESTIMATE_="-1.080524955" LABEL="ltv"/>
+<Obs _VARIABLE_="ltv" _GROUP_="10" _LABEL_="_MISSING_" _WOE_="-3.514143032" MANUALWOE="." _PERCENT_="0.846835557" _EVENT_RATE_="67.594937319" SCORECARD_POINTS="-48" _NO_INFO_="61.848124945" _ESTIMATE_="-1.080524955" LABEL="ltv"/>
+<Obs _VARIABLE_="msrp" _GROUP_="-2" _LABEL_="Neutral Score" _WOE_="." MANUALWOE="." _PERCENT_="." _EVENT_RATE_="." SCORECARD_POINTS="62" _NO_INFO_="." _ESTIMATE_="." LABEL="msrp"/>
+<Obs _VARIABLE_="msrp" _GROUP_="1" _LABEL_="msrp&lt; 5700" _WOE_="-1.181267618" MANUALWOE="." _PERCENT_="4.9549208139" _EVENT_RATE_="16.830952034" SCORECARD_POINTS="56" _NO_INFO_="61.848124945" _ESTIMATE_="-0.170632024" LABEL="msrp"/>
+<Obs _VARIABLE_="msrp" _GROUP_="2" _LABEL_="5700&lt;= msrp&lt; 7950" _WOE_="0.0134787791" MANUALWOE="." _PERCENT_="5.0173719104" _EVENT_RATE_="5.7736030248" SCORECARD_POINTS="62" _NO_INFO_="61.848124945" _ESTIMATE_="-0.170632024" LABEL="msrp"/>
+<Obs _VARIABLE_="msrp" _GROUP_="3" _LABEL_="7950&lt;= msrp&lt; 10925" _WOE_="0.0818814599" MANUALWOE="." _PERCENT_="10.000026862" _EVENT_RATE_="5.4125797573" SCORECARD_POINTS="62" _NO_INFO_="61.848124945" _ESTIMATE_="-0.170632024" LABEL="msrp"/>
+<Obs _VARIABLE_="msrp" _GROUP_="4" _LABEL_="10925&lt;= msrp&lt; 13350" _WOE_="-0.156526793" MANUALWOE="." _PERCENT_="9.9969945882" _EVENT_RATE_="6.7710963908" SCORECARD_POINTS="61" _NO_INFO_="61.848124945" _ESTIMATE_="-0.170632024" LABEL="msrp"/>
+<Obs _VARIABLE_="msrp" _GROUP_="5" _LABEL_="13350&lt;= msrp&lt; 15400" _WOE_="-0.042102605" MANUALWOE="." _PERCENT_="10.003116637" _EVENT_RATE_="6.0835287698" SCORECARD_POINTS="62" _NO_INFO_="61.848124945" _ESTIMATE_="-0.170632024" LABEL="msrp"/>
+<Obs _VARIABLE_="msrp" _GROUP_="6" _LABEL_="15400&lt;= msrp&lt; 17500" _WOE_="0.1506286169" MANUALWOE="." _PERCENT_="9.909540726" _EVENT_RATE_="5.0712083918" SCORECARD_POINTS="63" _NO_INFO_="61.848124945" _ESTIMATE_="-0.170632024" LABEL="msrp"/>
+<Obs _VARIABLE_="msrp" _GROUP_="7" _LABEL_="17500&lt;= msrp&lt; 21000" _WOE_="0.0700635626" MANUALWOE="." _PERCENT_="14.892244649" _EVENT_RATE_="5.4733603802" SCORECARD_POINTS="62" _NO_INFO_="61.848124945" _ESTIMATE_="-0.170632024" LABEL="msrp"/>
+<Obs _VARIABLE_="msrp" _GROUP_="8" _LABEL_="21000&lt;= msrp&lt; 25668" _WOE_="0.2163115033" MANUALWOE="." _PERCENT_="15.194256967" _EVENT_RATE_="4.7641840684" SCORECARD_POINTS="63" _NO_INFO_="61.848124945" _ESTIMATE_="-0.170632024" LABEL="msrp"/>
+<Obs _VARIABLE_="msrp" _GROUP_="9" _LABEL_="25668&lt;= msrp" _WOE_="0.3291905267" MANUALWOE="." _PERCENT_="20.000868471" _EVENT_RATE_="4.2773703282" SCORECARD_POINTS="63" _NO_INFO_="61.848124945" _ESTIMATE_="-0.170632024" LABEL="msrp"/>
+<Obs _VARIABLE_="msrp" _GROUP_="10" _LABEL_="_MISSING_" _WOE_="-0.058285198" MANUALWOE="." _PERCENT_="0.0306583754" _EVENT_RATE_="0" SCORECARD_POINTS="62" _NO_INFO_="61.848124945" _ESTIMATE_="-0.170632024" LABEL="msrp"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="-2" _LABEL_="Neutral Score" _WOE_="." MANUALWOE="." _PERCENT_="." _EVENT_RATE_="." SCORECARD_POINTS="62" _NO_INFO_="." _ESTIMATE_="." LABEL="rev_util"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="1" _LABEL_="rev_util&lt; 5, _MISSING_" _WOE_="0.0848617427" MANUALWOE="." _PERCENT_="23.312164234" _EVENT_RATE_="5.3973208807" SCORECARD_POINTS="62" _NO_INFO_="61.848124945" _ESTIMATE_="-0.247116315" LABEL="rev_util"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="2" _LABEL_="5&lt;= rev_util&lt; 9" _WOE_="0.8780576923" MANUALWOE="." _PERCENT_="5.9763536486" _EVENT_RATE_="2.5160705474" SCORECARD_POINTS="68" _NO_INFO_="61.848124945" _ESTIMATE_="-0.247116315" LABEL="rev_util"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="3" _LABEL_="9&lt;= rev_util&lt; 18" _WOE_="0.5732270889" MANUALWOE="." _PERCENT_="9.8916467432" _EVENT_RATE_="3.3824903175" SCORECARD_POINTS="66" _NO_INFO_="61.848124945" _ESTIMATE_="-0.247116315" LABEL="rev_util"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="4" _LABEL_="18&lt;= rev_util&lt; 24" _WOE_="0.6619127289" MANUALWOE="." _PERCENT_="5.5515456903" _EVENT_RATE_="3.1043202164" SCORECARD_POINTS="67" _NO_INFO_="61.848124945" _ESTIMATE_="-0.247116315" LABEL="rev_util"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="5" _LABEL_="24&lt;= rev_util&lt; 43" _WOE_="0.1753126435" MANUALWOE="." _PERCENT_="15.107127045" _EVENT_RATE_="4.9536850858" SCORECARD_POINTS="63" _NO_INFO_="61.848124945" _ESTIMATE_="-0.247116315" LABEL="rev_util"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="6" _LABEL_="43&lt;= rev_util&lt; 57" _WOE_="0.0126926561" MANUALWOE="." _PERCENT_="9.6680501526" _EVENT_RATE_="5.7778945685" SCORECARD_POINTS="62" _NO_INFO_="61.848124945" _ESTIMATE_="-0.247116315" LABEL="rev_util"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="7" _LABEL_="57&lt;= rev_util&lt; 73" _WOE_="-0.186324268" MANUALWOE="." _PERCENT_="9.9713421481" _EVENT_RATE_="6.9616454553" SCORECARD_POINTS="61" _NO_INFO_="61.848124945" _ESTIMATE_="-0.247116315" LABEL="rev_util"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="8" _LABEL_="73&lt;= rev_util&lt; 83" _WOE_="-0.295941665" MANUALWOE="." _PERCENT_="5.078491754" _EVENT_RATE_="7.7060107066" SCORECARD_POINTS="60" _NO_INFO_="61.848124945" _ESTIMATE_="-0.247116315" LABEL="rev_util"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="9" _LABEL_="83&lt;= rev_util&lt; 93" _WOE_="-0.488830531" MANUALWOE="." _PERCENT_="5.0199076408" _EVENT_RATE_="9.1947090302" SCORECARD_POINTS="58" _NO_INFO_="61.848124945" _ESTIMATE_="-0.247116315" LABEL="rev_util"/>
+<Obs _VARIABLE_="rev_util" _GROUP_="10" _LABEL_="93&lt;= rev_util" _WOE_="-0.618949896" MANUALWOE="." _PERCENT_="10.423370943" _EVENT_RATE_="10.340298898" SCORECARD_POINTS="57" _NO_INFO_="61.848124945" _ESTIMATE_="-0.247116315" LABEL="rev_util"/>
+<Obs _VARIABLE_="tot_derog" _GROUP_="-2" _LABEL_="Neutral Score" _WOE_="." MANUALWOE="." _PERCENT_="." _EVENT_RATE_="." SCORECARD_POINTS="62" _NO_INFO_="." _ESTIMATE_="." LABEL="tot_derog"/>
+<Obs _VARIABLE_="tot_derog" _GROUP_="1" _LABEL_="tot_derog&lt; 1" _WOE_="0.4436549131" MANUALWOE="." _PERCENT_="50.353833521" _EVENT_RATE_="3.8324912826" SCORECARD_POINTS="64" _NO_INFO_="61.848124945" _ESTIMATE_="-0.192821628" LABEL="tot_derog"/>
+<Obs _VARIABLE_="tot_derog" _GROUP_="2" _LABEL_="1&lt;= tot_derog&lt; 2" _WOE_="-0.036658426" MANUALWOE="." _PERCENT_="15.289213268" _EVENT_RATE_="6.0524990017" SCORECARD_POINTS="62" _NO_INFO_="61.848124945" _ESTIMATE_="-0.192821628" LABEL="tot_derog"/>
+<Obs _VARIABLE_="tot_derog" _GROUP_="3" _LABEL_="2&lt;= tot_derog&lt; 3" _WOE_="-0.309855564" MANUALWOE="." _PERCENT_="8.3504411982" _EVENT_RATE_="7.8055516263" SCORECARD_POINTS="60" _NO_INFO_="61.848124945" _ESTIMATE_="-0.192821628" LABEL="tot_derog"/>
+<Obs _VARIABLE_="tot_derog" _GROUP_="4" _LABEL_="3&lt;= tot_derog&lt; 4" _WOE_="-0.290975441" MANUALWOE="." _PERCENT_="5.8164413262" _EVENT_RATE_="7.6707157445" SCORECARD_POINTS="60" _NO_INFO_="61.848124945" _ESTIMATE_="-0.192821628" LABEL="tot_derog"/>
+<Obs _VARIABLE_="tot_derog" _GROUP_="5" _LABEL_="4&lt;= tot_derog&lt; 6" _WOE_="-0.606665845" MANUALWOE="." _PERCENT_="6.8544653699" _EVENT_RATE_="10.226995345" SCORECARD_POINTS="58" _NO_INFO_="61.848124945" _ESTIMATE_="-0.192821628" LABEL="tot_derog"/>
+<Obs _VARIABLE_="tot_derog" _GROUP_="6" _LABEL_="6&lt;= tot_derog" _WOE_="-0.429271933" MANUALWOE="." _PERCENT_="10.125031257" _EVENT_RATE_="8.7093495231" SCORECARD_POINTS="59" _NO_INFO_="61.848124945" _ESTIMATE_="-0.192821628" LABEL="tot_derog"/>
+<Obs _VARIABLE_="tot_derog" _GROUP_="7" _LABEL_="_MISSING_" _WOE_="-0.54785338" MANUALWOE="." _PERCENT_="3.2105740598" _EVENT_RATE_="9.6994534515" SCORECARD_POINTS="59" _NO_INFO_="61.848124945" _ESTIMATE_="-0.192821628" LABEL="tot_derog"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="-2" _LABEL_="Neutral Score" _WOE_="." MANUALWOE="." _PERCENT_="." _EVENT_RATE_="." SCORECARD_POINTS="62" _NO_INFO_="." _ESTIMATE_="." LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="1" _LABEL_="tot_rev_line&lt; 1000" _WOE_="-0.687241149" MANUALWOE="." _PERCENT_="8.999009643" _EVENT_RATE_="10.990795323" SCORECARD_POINTS="55" _NO_INFO_="61.848124945" _ESTIMATE_="-0.369121828" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="2" _LABEL_="1000&lt;= tot_rev_line&lt; 3595" _WOE_="-0.397525962" MANUALWOE="." _PERCENT_="14.1826909" _EVENT_RATE_="8.4602452781" SCORECARD_POINTS="58" _NO_INFO_="61.848124945" _ESTIMATE_="-0.369121828" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="3" _LABEL_="3595&lt;= tot_rev_line&lt; 4918" _WOE_="-0.251510424" MANUALWOE="." _PERCENT_="4.6285623458" _EVENT_RATE_="7.395865264" SCORECARD_POINTS="59" _NO_INFO_="61.848124945" _ESTIMATE_="-0.369121828" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="4" _LABEL_="4918&lt;= tot_rev_line&lt; 8000" _WOE_="-0.216461955" MANUALWOE="." _PERCENT_="9.2004691406" _EVENT_RATE_="7.1593721392" SCORECARD_POINTS="60" _NO_INFO_="61.848124945" _ESTIMATE_="-0.369121828" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="5" _LABEL_="8000&lt;= tot_rev_line&lt; 13805" _WOE_="0.0115697743" MANUALWOE="." _PERCENT_="13.979332574" _EVENT_RATE_="5.7839999974" SCORECARD_POINTS="62" _NO_INFO_="61.848124945" _ESTIMATE_="-0.369121828" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="6" _LABEL_="13805&lt;= tot_rev_line&lt; 19500" _WOE_="0.4592155887" MANUALWOE="." _PERCENT_="9.2677948538" _EVENT_RATE_="3.7755660552" SCORECARD_POINTS="67" _NO_INFO_="61.848124945" _ESTIMATE_="-0.369121828" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="7" _LABEL_="19500&lt;= tot_rev_line&lt; 26697" _WOE_="0.6830411588" MANUALWOE="." _PERCENT_="9.3001938142" _EVENT_RATE_="3.0414277843" SCORECARD_POINTS="69" _NO_INFO_="61.848124945" _ESTIMATE_="-0.369121828" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="8" _LABEL_="26697&lt;= tot_rev_line&lt; 37569" _WOE_="0.8495741851" MANUALWOE="." _PERCENT_="9.2679998587" _EVENT_RATE_="2.5868850257" SCORECARD_POINTS="71" _NO_INFO_="61.848124945" _ESTIMATE_="-0.369121828" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="9" _LABEL_="37569&lt;= tot_rev_line" _WOE_="1.1376072392" MANUALWOE="." _PERCENT_="13.920051074" _EVENT_RATE_="1.9521439729" SCORECARD_POINTS="74" _NO_INFO_="61.848124945" _ESTIMATE_="-0.369121828" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_rev_line" _GROUP_="10" _LABEL_="_MISSING_" _WOE_="-0.54941818" MANUALWOE="." _PERCENT_="7.2538957969" _EVENT_RATE_="9.7132169402" SCORECARD_POINTS="56" _NO_INFO_="61.848124945" _ESTIMATE_="-0.369121828" LABEL="tot_rev_line"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="-2" _LABEL_="Neutral Score" _WOE_="." MANUALWOE="." _PERCENT_="." _EVENT_RATE_="." SCORECARD_POINTS="62" _NO_INFO_="." _ESTIMATE_="." LABEL="tot_tr"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="1" _LABEL_="tot_tr&lt; 4" _WOE_="-0.400509815" MANUALWOE="." _PERCENT_="7.6114070671" _EVENT_RATE_="8.4833773321" SCORECARD_POINTS="59" _NO_INFO_="61.848124945" _ESTIMATE_="-0.281372677" LABEL="tot_tr"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="2" _LABEL_="4&lt;= tot_tr&lt; 6" _WOE_="-0.318520399" MANUALWOE="." _PERCENT_="5.5303293516" _EVENT_RATE_="7.8681259353" SCORECARD_POINTS="59" _NO_INFO_="61.848124945" _ESTIMATE_="-0.281372677" LABEL="tot_tr"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="3" _LABEL_="6&lt;= tot_tr&lt; 9" _WOE_="-0.414706716" MANUALWOE="." _PERCENT_="9.0577436483" _EVENT_RATE_="8.5942141088" SCORECARD_POINTS="58" _NO_INFO_="61.848124945" _ESTIMATE_="-0.281372677" LABEL="tot_tr"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="4" _LABEL_="9&lt;= tot_tr&lt; 11" _WOE_="-0.184476626" MANUALWOE="." _PERCENT_="6.8007612804" _EVENT_RATE_="6.9496813002" SCORECARD_POINTS="60" _NO_INFO_="61.848124945" _ESTIMATE_="-0.281372677" LABEL="tot_tr"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="5" _LABEL_="11&lt;= tot_tr&lt; 13" _WOE_="-0.12176712" MANUALWOE="." _PERCENT_="6.8797165655" _EVENT_RATE_="6.5549594907" SCORECARD_POINTS="61" _NO_INFO_="61.848124945" _ESTIMATE_="-0.281372677" LABEL="tot_tr"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="6" _LABEL_="13&lt;= tot_tr&lt; 15" _WOE_="-0.012421084" MANUALWOE="." _PERCENT_="7.068993866" _EVENT_RATE_="5.9161413203" SCORECARD_POINTS="62" _NO_INFO_="61.848124945" _ESTIMATE_="-0.281372677" LABEL="tot_tr"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="7" _LABEL_="15&lt;= tot_tr&lt; 18" _WOE_="0.1795849194" MANUALWOE="." _PERCENT_="10.263425085" _EVENT_RATE_="4.9336062662" SCORECARD_POINTS="63" _NO_INFO_="61.848124945" _ESTIMATE_="-0.281372677" LABEL="tot_tr"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="8" _LABEL_="18&lt;= tot_tr&lt; 32" _WOE_="0.2825930857" MANUALWOE="." _PERCENT_="32.629419417" _EVENT_RATE_="4.4723018013" SCORECARD_POINTS="64" _NO_INFO_="61.848124945" _ESTIMATE_="-0.281372677" LABEL="tot_tr"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="9" _LABEL_="32&lt;= tot_tr" _WOE_="0.5761689445" MANUALWOE="." _PERCENT_="10.94762966" _EVENT_RATE_="3.3728623764" SCORECARD_POINTS="67" _NO_INFO_="61.848124945" _ESTIMATE_="-0.281372677" LABEL="tot_tr"/>
+<Obs _VARIABLE_="tot_tr" _GROUP_="10" _LABEL_="_MISSING_" _WOE_="-0.54785338" MANUALWOE="." _PERCENT_="3.2105740598" _EVENT_RATE_="9.6994534515" SCORECARD_POINTS="57" _NO_INFO_="61.848124945" _ESTIMATE_="-0.281372677" LABEL="tot_tr"/>
+</Data>
+<Metadata>
+<Variable NAME="_variable_" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="_group_" LABEL="Group" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="_label_" LABEL="Label" LENGTH="200" FORMAT="" TYPE="C"/>
+<Variable NAME="_woe_" LABEL="Weight of Evidence" LENGTH="8" FORMAT="8.5" TYPE="N"/>
+<Variable NAME="manualWoe" LABEL="Manual WOE" LENGTH="8" FORMAT="8.5" TYPE="N"/>
+<Variable NAME="_percent_" LABEL="" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="_event_rate_" LABEL="Event Rate BAD = 1" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="SCORECARD_POINTS" LABEL="Scorecard Points" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="_no_info_" LABEL="" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="_ESTIMATE_" LABEL="" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="LABEL" LABEL="Label" LENGTH="200" FORMAT="" TYPE="C"/>
+</Metadata>
+</SCORECARD>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMEXPL.STATEXPLORE.CLASS" COMPONENT="StatExplore" ID="Stat" X="401" Y="111" DESCRIPTION="StatExplore" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="EXPLORE" TOOLPREFIX="Stat">
+<PROPERTIES BySegment="N" Correlation="Y" Spearman="N" Pearson="Y" ChiSquare="Y" ChiSquareInterval="N" ChiSquareIntervalNBins="5" MaximumVars="1000" HideVariable="Y" DropRejected="Y" UseValidate="N" UseTest="N" UseScore="N" NObs="100000" IntervalDistribution="Y" ClassDistribution="Y" LevelSummary="Y" ForceRun="N" RunAction="Train" Component="StatExplore">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes/>
+<EmFileProperties>
+<CROSSTAB Type="DATA">
+<Data/>
+<Metadata/>
+</CROSSTAB>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+</NODES>
+<CONNECTIONS>
+<CONNECTION FROM="Part" TO="IGN"/>
+<CONNECTION FROM="IGN" TO="Scorecard"/>
+<CONNECTION FROM="Scorecard" TO="RejInf3"/>
+<CONNECTION FROM="Scorecard" TO="RejInf2"/>
+<CONNECTION FROM="Scorecard" TO="RejInf"/>
+<CONNECTION FROM="RejInf" TO="Part2"/>
+<CONNECTION FROM="Part2" TO="IGN2"/>
+<CONNECTION FROM="IGN2" TO="Scorecard2"/>
+<CONNECTION FROM="Ids" TO="Part"/>
+<CONNECTION FROM="Ids" TO="Stat"/>
+<CONNECTION FROM="Ids2" TO="RejInf"/>
+<CONNECTION FROM="Ids2" TO="RejInf2"/>
+<CONNECTION FROM="Ids2" TO="RejInf3"/>
+</CONNECTIONS>
+<NOTES>
+<DATA><![CDATA[
+
+
+]]>
+</DATA>
+</NOTES>
+</Workspace>
+</_ROOT_>
