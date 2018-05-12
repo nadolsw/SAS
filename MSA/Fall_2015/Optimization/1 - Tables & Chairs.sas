@@ -1,0 +1,17 @@
+proc optmodel;
+*DEFINE VARIABLES*;
+	var chair >= 0;
+	var table >= 0;
+*OBJECTIVE FUNCTION*;
+	max profit = 102*Chair + 387*Table;
+	min sales = Chair + Table;
+*CONSTRAINTS*;
+	con chair_demand: Chair <= 360;
+	con table_demand: Table <= 80;
+	con assembly_time: 3*Chair + 5*Table <= 240;
+	con shipping_time: 2*Chair + 3*Table <= 160;
+*SOLVE*;
+	solve objective profit;
+*PRINT RESULTS*;
+	print Chair Table;
+run; quit;
