@@ -1,0 +1,102 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jul 11 14:47:02 2019
+
+@author: winado
+"""
+
+import os
+import scipy
+import matplotlib
+from PIL import Image
+
+output_dir='C:/Users/winado/Desktop/Python/raw_images/'
+
+#Define dimsensions of individual spectrogram images
+sig_dim = 9
+row_dim = 127
+col_dim = 127
+
+train_labels=train_labels[:100]
+test_labels=test_labels[:50]
+
+activities_description = {
+    0: 'walking',
+    1: 'walking_upstairs',
+    2: 'walking_downstairs',
+    3: 'sitting',
+    4: 'standing',
+    5: 'laying'
+}
+
+Xstack = np.vstack((Xtrain_CWT,Xtest_CWT))
+Ystack = np.concatenate((train_labels,test_labels))
+
+#%%
+
+def output_ind_spec_imgs(data):
+    global listofimages
+    listofimages = []
+    for sig_comp in range(0,sig_dim):
+        cwt_slice = data[:,:,sig_comp]
+        img_path = output_dir + "cwt" + str(sig_comp) + ".png"
+        matplotlib.image.imsave(img_path, cwt_slice)
+        listofimages.append(img_path,)
+
+def stitch_collage(listofimages):
+    cols = 3
+    rows = 3
+    width = cols * col_dim
+    height = rows * row_dim
+    thumbnail_width = width//cols
+    thumbnail_height = height//rows
+    size = thumbnail_width, thumbnail_height
+    new_im = Image.new('RGB', (width, height))
+    ims = []
+    for p in listofimages:
+        im = Image.open(p)
+        im.thumbnail(size)
+        ims.append(im)
+    i = 0
+    x = 0
+    y = 0
+    for row in range(rows):
+        for col in range(cols):
+            #print(i, y, x)
+            new_im.paste(ims[i], (y, x))
+            i += 1
+            y += thumbnail_height
+        x += thumbnail_width
+        y = 0
+    print("Saving: " + str(activity) + str(index) + ".png")
+    this_dir = output_dir + str(activity) + "/"
+    new_im.save(this_dir + str(activity) + str(index) + ".png")
+    
+
+#%%
+    
+#Convert label array into dataframe and add activity description
+df_target = pd.DataFrame(Ystack)
+df_target.columns = ['label']
+df_target['activity'] = df_target['label'].map(activities_description)
+
+activity_list = df_target['activity'].unique().tolist()
+
+#Loop over list of labels, extract list of index for each and then output spectrogram to folders by activity
+for activity in activity_list:
+    activity_index = (df_target[df_target['activity'] == str(activity)].index.tolist())
+    
+    print(activity)
+    print(activity_index)
+    
+    #Create directory for each activity label if it doesn't already exist
+    path = r'%s' % output_dir + str(activity) 
+    print("Writing out to: " + path)
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+    data = []
+    for index in activity_index:
+        data = Xstack[index,:,:,:]
+        output_ind_spec_imgs(data)    
+        stitch_collage(listofimages)
