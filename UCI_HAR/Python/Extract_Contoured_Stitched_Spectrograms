@@ -1,0 +1,134 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jul 11 14:47:02 2019
+
+@author: winado
+"""
+
+import os
+import scipy
+import matplotlib
+from PIL import Image
+from pylab import figure, axes, pie, title, show
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
+
+output_dir='C:/Users/winado/Desktop/Python/contoured_images/'
+
+#Define dimsensions of individual spectrogram images
+sig_dim = 9
+row_dim = 127
+col_dim = 127
+
+#train_labels=train_labels[:50]
+#test_labels=test_labels[:10]
+
+activities_description = {
+    0: 'walking',
+    1: 'walking_upstairs',
+    2: 'walking_downstairs',
+    3: 'sitting',
+    4: 'standing',
+    5: 'laying'
+}
+
+
+Xstack = np.vstack((train_signals,test_signals))
+Ystack = np.concatenate((train_labels,test_labels))
+
+#%%
+
+def save_spectrogram(ax, time, signal, waveletname = 'morl', cmap = plt.cm.seismic, outpath='C:/Users/winado/Desktop/Python/contoured_images/'):
+    dt = time[1] - time[0]
+    scales = np.arange(1, 128)
+    [coefficients, frequencies] = pywt.cwt(signal, scales, waveletname, dt)
+    power = (abs(coefficients)) ** 2
+    period = 1. / frequencies
+    levels = [0.0625, 0.125, 0.25, 0.5, 1, 2, 4, 8]
+    contourlevels = np.log2(levels)    
+    
+    fig, ax = plt.subplots(figsize=(1, 1), dpi=121)
+    im = ax.contourf(time, np.log2(period), np.log2(power), contourlevels, extend='both',cmap=cmap)
+    
+    plt.subplots_adjust(0,0,1,1,0,0)
+    ax.invert_yaxis()
+    ylim = ax.get_ylim()
+    ax.set_ylim(ylim[0], -1)
+    ax.set_axis_off()
+    ax.margins(0,0)
+    ax.xaxis.set_major_locator(plt.NullLocator())
+    ax.yaxis.set_major_locator(plt.NullLocator())
+    plt.savefig(outpath, bbox_inches='tight', pad_inches=0, transparent=True)
+    
+
+def output_ind_spec_imgs(data):
+    global listofimages
+    listofimages = []
+    for sig_comp in range(0,sig_dim):
+        signal = data[:,sig_comp]
+        img_path = output_dir + "spectrogram" + str(sig_comp) + ".png"        
+        save_spectrogram(ax, time, signal, outpath=img_path)       
+        listofimages.append(img_path,)
+        
+def stitch_collage(listofimages):
+    cols = 3
+    rows = 3
+    width = cols * col_dim
+    height = rows * row_dim
+    thumbnail_width = width//cols
+    thumbnail_height = height//rows
+    size = thumbnail_width, thumbnail_height
+    new_im = Image.new('RGB', (width, height))
+    ims = []
+    for p in listofimages:
+        im = Image.open(p)
+        im.thumbnail(size)
+        ims.append(im)
+    i = 0
+    x = 0
+    y = 0
+    for row in range(rows):
+        for col in range(cols):
+            #print(i, y, x)
+            new_im.paste(ims[i], (y, x))
+            i += 1
+            y += thumbnail_height
+        x += thumbnail_width
+        y = 0
+    print("Saving: " + str(activity) + str(index) + ".png")
+    this_dir = output_dir + str(activity) + "/"
+    new_im.save(this_dir + str(activity) + str(index) + ".png")
+        
+#output_ind_spec_imgs(train_signals)
+#stitch_collage(listofimages)
+   
+
+#%%
+    
+#Convert label array into dataframe and add activity description
+df_target = pd.DataFrame(Ystack)
+df_target.columns = ['label']
+df_target['activity'] = df_target['label'].map(activities_description)
+
+activity_list = df_target['activity'].unique().tolist()
+
+#Loop over list of labels, extract list of index for each and then output spectrogram to folders by activity
+
+activity='walking'
+activity_index = (df_target[df_target['activity'] == str(activity)].index.tolist())
+
+print(activity)
+print(activity_index)
+
+#Create directory for each activity label if it doesn't already exist
+path = r'%s' % output_dir + str(activity) 
+print("Writing out to: " + path)
+if not os.path.exists(path):
+    os.makedirs(path)
+
+data = []
+for index in activity_index:
+    data = Xstack[index,:,:]
+    output_ind_spec_imgs(data)    
+    stitch_collage(listofimages)  
+   
