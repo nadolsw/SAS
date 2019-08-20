@@ -1,0 +1,84 @@
+#Set Environment Variable to enable SSL for CAS
+import os
+os.environ["CAS_CLIENT_SSL_CA_LIST"] = "/opt/sas/viya/config/etc/SASSecurityCertificateFramework/cacerts/vault-deployTarget-ca.crt"
+
+#Connect CAS
+import swat
+conn = swat.CAS('sasserver.demo.sas.com', 5570, 'sas', 'Orion123')
+
+#Import necessary packages and modules
+import os
+import sys
+import swat
+import dlpy
+import json
+import numpy as np
+import pandas as pd
+import sklearn as sk
+import matplotlib
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+from dlpy import splitting
+from dlpy import applications
+from dlpy import Sequential
+from dlpy.model import *
+from dlpy.layers import * 
+from dlpy.applications import *
+from swat.cas.table import CASTable
+from matplotlib import pyplot as plt
+from sklearn.decomposition import PCA
+swat.options.cas.print_messages = True
+
+#Print an image to verify path is correct and accessible
+%pylab inline
+img=mpimg.imread('/home/sas/images/laying/layingt4.png')
+imgplot = plt.imshow(img)
+plt.show()
+
+#Set caslib path working directory - NOTE: cannot be a parent or child path of images dir defined below
+modelPath='/home/sas/data/'
+conn.table.addcaslib(activeonadd=True,datasource={'srctype':'path'},name='SWAT',path=modelPath,subdirectories=True)
+conn.setsessopt(caslib='SWAT')  #  Set default active caslib
+conn.table.caslibInfo() 
+conn.tableinfo()
+
+#Load images - NOTE: cannot be a parent or child path of working caslib dir defined above
+imagePath='/home/sas/images/'
+my_images = dlpy.images.ImageTable.load_files(conn, path=imagePath,casout=dict(name='my_images',caslib='SWAT'))
+conn.tableinfo()
+
+#Shuffle and resize images
+my_images.shuffle(casout=dict(name='my_images', replace=True));
+my_images.resize(width=128, height=128)
+
+#Split data into training and test sets
+train_imgs, test_imgs = dlpy.splitting.two_way_split(my_images, test_rate=25, stratify_by='_label_', seed = 12345)
+
+#Verify split successful
+train_imgs.label_freq
+test_imgs.label_freq
+
+#Define model architecture
+model = Sequential(conn, model_table = 'CNN')
+model.add(InputLayer(3,128,128,offsets=train_imgs.channel_means))
+model.add(Conv2d(32,width=5,height=5,stride=1,act='relu',dropout='0.025'))
+model.add(Pooling(width=2,height=2,stride=2))
+model.add(Conv2d(64,width=5,height=5,stride=1,act='relu',dropout='0.025'))
+model.add(Pooling(width=2,height=2,stride=2))
+model.add(Dense(1000,act='relu',dropout='0.50'))
+model.add(OutputLayer(act='softmax',n=6))
+model.print_summary()
+
+#Fit Model
+model.fit(data=train_imgs, 
+            valid_table=test_imgs,
+            mini_batch_size=64, 
+            max_epochs=10, 
+            lr=.001, 
+            gpu=False, 
+            log_level=2,
+            save_best_weights=True,
+            seed=12345)
+   
+model.print_summary()
