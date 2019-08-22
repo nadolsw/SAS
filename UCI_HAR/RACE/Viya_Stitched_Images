@@ -102,7 +102,7 @@ Proc Cas;
 	/****************************/
 	/* Add Convolutional layers */
 	/****************************/
-	AddLayer / model='ConVNN' name='ConVLayer1a' layer={type='CONVO' nFilters=128  width=5 height=5 stride=1 dropout=0.025} srcLayers={'data'};
+	AddLayer / model='ConVNN' name='ConVLayer1a' layer={type='CONVO' nFilters=32  width=5 height=5 stride=1 dropout=0.025} srcLayers={'data'};
 	AddLayer / model='ConVNN' name='BN1a' layer={type='BATCHNORM' act='RELU'} srcLayers={'ConVLayer1a'};	
 	/***************************/
 	/* Add a max pooling layer */
