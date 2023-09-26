@@ -4,7 +4,7 @@ os.environ["CAS_CLIENT_SSL_CA_LIST"] = "/opt/sas/viya/config/etc/SASSecurityCert
 
 #Connect CAS
 import swat
-conn = swat.CAS('sasserver.demo.sas.com', 5570, 'sas', 'Orion123')
+conn = swat.CAS('sasserver.demo.sas.com', 5570, '<user>', '<pwd>')
 
 #Import necessary packages and modules
 import os
